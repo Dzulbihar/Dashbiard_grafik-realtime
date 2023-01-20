@@ -1,0 +1,51 @@
+<figure class="highcharts-figure">
+  <div id="grafik_market_share_pendapatan_international"></div>
+</figure>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+
+<script type="text/javascript">
+Highcharts.chart('grafik_market_share_pendapatan_international', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Persentase Market Share Pendapatan International'
+    },
+    subtitle: {
+        align: 'center',
+        text: 'Tahun <?php echo $tahun_ini ?>'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:,.2f} %</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:,.2f} %',
+                connectorColor: 'silver'
+            }
+        }
+    },
+    series: [{
+        name: 'Pendapatan International',
+        data: <?php echo json_encode($grafik_market_pendapatan_int)?>
+    }]
+});
+</script>
